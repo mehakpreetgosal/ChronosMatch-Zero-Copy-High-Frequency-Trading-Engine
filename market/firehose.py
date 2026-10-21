@@ -1,6 +1,5 @@
 """
-ChronosMatch - Market Firehose (Week 1, Person 3)
-
+ChronosMatch - Market Firehose
 Asyncio client that simulates a Nasdaq/NYSE tick firehose by blasting mock
 Buy/Sell orders into the zero-copy IPC ring buffer.
 
@@ -8,7 +7,7 @@ Order format agreed by the team (fixed 24 bytes):
     struct.pack('<QqIB3x', order_id, price_in_cents, quantity, side)
     side: 0 = Buy, 1 = Sell
 
-Buffer API agreed with Person 2:
+Buffer API agreed with Sasankh:
     buf.write_order(order_id, price, qty, side) -> bool (False if buffer full)
 
 Run (from the project root):
@@ -23,7 +22,7 @@ BUY, SELL = 0, 1
 
 
 # --------------------------------------------------------------------------
-# Buffer selection: use Person 2's real ring buffer if present, else a stub
+# Buffer selection: use real ring buffer if present, else a stub
 # --------------------------------------------------------------------------
 class StubBuffer:
     """Stand-in with the agreed API so you can work before the real buffer exists."""
@@ -40,7 +39,7 @@ def get_buffer(use_stub=False):
     if use_stub:
         return StubBuffer()
     try:
-        # >>> Adjust module/class name to match Person 2's implementation <<<
+        # >>> Adjust module/class name to match Sasankh's implementation <<<
         from ipc.ring_buffer import RingBuffer
         return RingBuffer()
     except Exception as exc:  # ImportError or constructor mismatch
@@ -49,7 +48,7 @@ def get_buffer(use_stub=False):
 
 
 # --------------------------------------------------------------------------
-# Order generation (Person 4 may supply a generator; this is the fallback)
+# Order generation (this is the fallback)
 # --------------------------------------------------------------------------
 def build_order_pool(size=100_000, mid_price=10_000, spread=100, seed=42):
     """Pre-generate (price, qty, side) tuples so generation cost stays out of
