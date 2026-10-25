@@ -1,18 +1,4 @@
-"""
-Pure-Python reference Limit Order Book (price-time priority).
 
-Purpose:
-  1. Lets you write and run your tests BEFORE Person 1's Cython engine exists.
-  2. Acts as an "oracle": in the stress test, the Cython engine's trades must
-     equal this reference's trades for the same input.
-
-Interface (agree on this with Person 1):
-    add_order(order_id, price, qty, side) -> list[(buy_id, sell_id, price, qty)]
-    best_bid() -> (price, total_qty) | None
-    best_ask() -> (price, total_qty) | None
-    resting_qty(side) -> int
-Trades execute at the price of the order already resting on the book.
-"""
 from collections import deque
 
 BUY, SELL = 0, 1
