@@ -1,11 +1,3 @@
-"""
-Chooses which engine the tests run against.
-
-  * If Person 1's Cython engine is importable, tests run against it.
-  * Otherwise they run against the pure-Python reference book.
-
->>> Edit the import below to match Person 1's module/class name. <<<
-"""
 import pytest
 
 from tests.reference_book import ReferenceOrderBook
