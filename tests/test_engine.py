@@ -1,9 +1,5 @@
 """
-ChronosMatch - Engine Verification (Week 2, Person 3)
-
-Proves the Limit Order Book matches a Buy with a corresponding Sell instantly
-and obeys price-time priority.
-Run:  pytest -v
+ChronosMatch - Engine Verification 
 """
 import random
 import time
