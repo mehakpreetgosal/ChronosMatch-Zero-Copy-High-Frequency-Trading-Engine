@@ -1,9 +1,5 @@
 """
-Week 3: GC PROOF - show the Garbage Collector never runs while orders match.
-
- * With Person 1's Cython engine: asserts ZERO collections (this is the proof).
- * With the pure-Python reference book: it only REPORTS the number (the
-   reference allocates Python objects, so collections are expected there).
+GC PROOF - show the Garbage Collector never runs while orders match.
 
 Run:  pytest tests/test_gc_proof.py -v -s
 Override size: set env var GC_PROOF_ORDERS=1000000
