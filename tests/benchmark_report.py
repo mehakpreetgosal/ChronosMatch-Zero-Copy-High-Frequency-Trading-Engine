@@ -1,7 +1,5 @@
 """
-Generates a results table (Markdown) for the Mid-Project Review.
-Run (from project root):  python -m tests.benchmark_report
-Then paste the printed table into your docs / presentation.
+Generates a results table (Markdown) 
 """
 import re
 import subprocess
