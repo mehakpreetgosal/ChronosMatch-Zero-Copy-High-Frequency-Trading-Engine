@@ -1,4 +1,4 @@
-"""Week 3 tests: trade record format, latency stats, timing wrapper."""
+"""tests: trade record format, latency stats, timing wrapper."""
 from metrics.latency import (LatencyRecorder, TRADE_STRUCT, TimedBook,
                              pack_trade, unpack_trade)
 
