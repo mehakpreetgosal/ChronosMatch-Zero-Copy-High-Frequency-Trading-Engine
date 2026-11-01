@@ -1,4 +1,4 @@
-"""Week 4 tests: Whale rule = one order clearing >= WHALE_LEVELS price levels."""
+"""Whale rule = one order clearing >= WHALE_LEVELS price levels."""
 from config import WHALE_LEVELS
 from metrics.whale import is_whale, levels_cleared, whale_summary
 
