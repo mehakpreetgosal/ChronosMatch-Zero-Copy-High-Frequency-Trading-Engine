@@ -1,4 +1,4 @@
-"""Week 4: small soak (fast) - engine -> ledger counts must match exactly."""
+"""small soak (fast) - engine -> ledger counts must match exactly."""
 import os
 import tempfile
 
