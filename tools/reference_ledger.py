@@ -26,3 +26,27 @@ class ReferenceLedger:
                    levels_cleared INTEGER, t_in_ns INTEGER, t_out_ns INTEGER)"""
         )
         self.conn.commit()
+
+    
+    def write_batch(self, raw_records):
+        """raw_records: list of 48-byte trade records. One commit per batch."""
+        rows = [unpack_trade(r) for r in raw_records]
+        self.conn.executemany(
+            "INSERT INTO trades (buy_id, sell_id, price, qty, levels_cleared,"
+            " t_in_ns, t_out_ns) VALUES (?,?,?,?,?,?,?)", rows)
+        self.conn.commit()
+
+    def count(self):
+        return self.conn.execute("SELECT COUNT(*) FROM trades").fetchone()[0]
+
+    def total_qty(self):
+        return self.conn.execute("SELECT COALESCE(SUM(qty),0) FROM trades").fetchone()[0]
+
+    def whale_count(self, threshold):
+        return self.conn.execute(
+            "SELECT COUNT(DISTINCT t_in_ns) FROM trades WHERE levels_cleared >= ?",
+            (threshold,)).fetchone()[0]
+
+    def close(self):
+        self.conn.close()
+
